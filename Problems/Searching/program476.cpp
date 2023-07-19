@@ -16,12 +16,12 @@ ArrayX::ArrayX(int iNo)
 {
     this->iSize = iNo;
     this->Arr = new int(iSize);
-    cout<<"\nInside constructor to allocate memory.";
+    cout << "\nInside constructor to allocate memory.";
 }
 
 ArrayX::~ArrayX()
 {
-    cout<<"\nInside destructor to deallocate memory.";
+    cout << "\nInside destructor to deallocate memory.";
 
     delete[] Arr;
 }
@@ -29,7 +29,7 @@ ArrayX::~ArrayX()
 void ArrayX::Accept()
 {
     int iCnt = 0;
-    cout<<"\nInside Accept";
+    cout << "\nInside Accept\n";
     cout << "Enter the elements: \n";
     for (iCnt = 0; iCnt < iSize; iCnt++)
     {
@@ -40,7 +40,7 @@ void ArrayX::Accept()
 void ArrayX::Display()
 {
     int iCnt = 0;
-    cout<<"\nInside Display";
+    cout << "\nInside Display\n";
 
     cout << "Elements of array are: \n";
     for (iCnt = 0; iCnt < iSize; iCnt++)
@@ -51,14 +51,18 @@ void ArrayX::Display()
 }
 int main()
 {
-    int iValue =0;
-    cout<< "\nInside main"<<endl;
-    cout<<"Enter the size of the array: \n";
-    cin>> iValue;
+    int iValue = 0;
+    cout << "\nInside main" << endl;
+    cout << "Enter the size of the array: \n";
+    cin >> iValue;
 
-    ArrayX obj(5);
-    obj.Accept();
-    obj.Display();
-    cout<<"\nEnd of main";
+    ArrayX *obj = new ArrayX(iValue);
+
+    obj->Accept();
+    obj->Display();
+
+    delete obj;
+
+    cout << "\nEnd of main";
     return 0;
 }

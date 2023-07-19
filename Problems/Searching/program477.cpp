@@ -1,10 +1,11 @@
 #include <iostream>
 using namespace std;
 
+template <class T>
 class ArrayX
 {
 public:
-    int *Arr;
+    T *Arr;
     int iSize;
     ArrayX(int);
     ~ArrayX();
@@ -12,24 +13,23 @@ public:
     void Display();
 };
 
-ArrayX::ArrayX(int iNo)
+template <class T>
+ArrayX<T>::ArrayX(int iNo)
 {
     this->iSize = iNo;
-    this->Arr = new int(iSize);
-    cout<<"\nInside constructor to allocate memory.";
+    this->Arr = new T(iSize);
 }
 
-ArrayX::~ArrayX()
+template <class T>
+ArrayX<T>::~ArrayX()
 {
-    cout<<"\nInside destructor to deallocate memory.";
-
     delete[] Arr;
 }
 
-void ArrayX::Accept()
+template <class T>
+void ArrayX<T>::Accept()
 {
     int iCnt = 0;
-    cout<<"\nInside Accept";
     cout << "Enter the elements: \n";
     for (iCnt = 0; iCnt < iSize; iCnt++)
     {
@@ -37,11 +37,10 @@ void ArrayX::Accept()
     }
 }
 
-void ArrayX::Display()
+template <class T>
+void ArrayX<T>::Display()
 {
     int iCnt = 0;
-    cout<<"\nInside Display";
-
     cout << "Elements of array are: \n";
     for (iCnt = 0; iCnt < iSize; iCnt++)
     {
@@ -49,16 +48,20 @@ void ArrayX::Display()
     }
     cout << "\n";
 }
+
 int main()
 {
-    int iValue =0;
-    cout<< "\nInside main"<<endl;
-    cout<<"Enter the size of the array: \n";
-    cin>> iValue;
+    int iValue = 0;
+    cout << "Enter the size of the array: \n";
+    cin >> iValue;
 
-    ArrayX obj(5);
-    obj.Accept();
-    obj.Display();
-    cout<<"\nEnd of main";
+    //ArrrayX <int> obj(iValue);
+
+    ArrayX<int> *obj = new ArrayX<int>(iValue);
+
+    obj->Accept();
+    obj->Display();
+
+    delete obj;
     return 0;
 }
