@@ -39,7 +39,7 @@ int main()
     }
     iRet = write(fd, Arr, strlen(Arr));
 
-    printf("%d bytes get successfully returned in file", iRet);
+    printf("%d bytes get successfully written in file", iRet);
     close(fd);
     return 0;
 }
